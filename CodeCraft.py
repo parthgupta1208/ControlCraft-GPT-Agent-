@@ -21,7 +21,6 @@ def processtext():
     
     #building various cases
     if 'python' in text:
-        text=text.replace("```python","```")
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
         messages = [{"role": "system", "content" : "You are FridayAI, a large language model trained by Parth Gupta. Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
@@ -29,6 +28,7 @@ def processtext():
         )
         print(completion['choices'][0]['message']['content'])
         output=completion['choices'][0]['message']['content']
+        output=output.replace("```python","```")
         output=(output.split("```"))[1].split("```")[0]
         with open("C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.py", "w") as f:
             f.write(output)
@@ -36,7 +36,6 @@ def processtext():
         os.system("python C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.py")
         return render_template("result.html", textboxdata="<center><h2>VS Code Window is Opened</h2></center>")
     elif 'html' in text:
-        text=text.replace("```html","```")
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
         messages = [{"role": "system", "content" : "You are FridayAI, a large language model trained by Parth Gupta. Answer as concisely as possible. I will be giving you a prompt on how a webpage should look like and what will its function be. Give me the code for it but don't explain how the code works. The code should contain css and javscript code so the page is responsive. Ise the <script> and <style> tags instead of creating separate files"},
@@ -44,13 +43,13 @@ def processtext():
         )
         print(completion['choices'][0]['message']['content'])
         html=completion['choices'][0]['message']['content']
+        html=html.replace("```html","```")
         html=(html.split("```"))[1].split("```")[0]
         ehtml=html[:html.find("</body>")]+"<center><a href='/copycode'>Copy Code</a></center>"+html[html.find("</body>"):]
         return render_template("result.html", textboxdata=ehtml)
     elif 'java' in text:
         pass
     elif 'c++' in text:
-        text=text.replace("```cpp","```")
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
         messages = [{"role": "system", "content" : "You are FridayAI, a large language model trained by Parth Gupta. Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
@@ -58,6 +57,7 @@ def processtext():
         )
         print(completion['choices'][0]['message']['content'])
         output=completion['choices'][0]['message']['content']
+        output=output.replace("```cpp","```")
         output=(output.split("```"))[1].split("```")[0]
         with open("C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.cpp", "w") as f:
             f.write(output)
@@ -69,26 +69,26 @@ def processtext():
         pass
     elif ' c ' in text:
         pass
-    else:
-        text=text.replace("```python","```")
+    elif 'webbrowser' in text:
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        messages = [{"role": "system", "content" : "You are FridayAI, a large language model trained by Parth Gupta. Answer as concisely as possible. I will be giving you a prompt on what is to be performed. Give me selenium python code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well. Set chromedriver path as 'C:/Everything/chromedriver.exe'"},
+        messages = [{"role": "system", "content" : "Answer as concisely as possible. I will be giving you a prompt on what is to be performed, Give me selenium python script for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. Set chromedriver path as 'C:/Everything/chromedriver.exe'. Do not create code that might raise NoSuchElementException.wrap code in a try-except block to catch the NoSuchElementException exception and handle it gracefully, for example, by retrying the operation after waiting for some time or logging the error."},
         {"role": "user", "content" : text}]
         )
         print(completion['choices'][0]['message']['content'])
         output=completion['choices'][0]['message']['content']
+        output=output.replace("```python","```")
         output=(output.split("```"))[1].split("```")[0]
         if output.startswith("python"):
             output=output.lstrip("python")
         output=output.replace("driver.quit()","while len(driver.window_handles) > 0: pass\ndriver.quit()")
         with open("C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.py", "w") as f:
             f.write(output)
-        pyautogui.hotkey('winleft', 'r')
-        pyautogui.typewrite("C:\Python311\python.exe C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.py")
-        pyautogui.press('enter')
-
-        return render_template("result.html", textboxdata="<center><h2>VS Code Window is Opened</h2></center>")
+        os.system("conda activate thebigall")
+        os.system("C:\\Users\\parth\\.conda\\envs\\thebigall\\python.exe \"C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.py\"")
+        return render_template("result.html", textboxdata="<center><h2>Chrome Window is Opened</h2></center>")
+    else:
+        pass
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
