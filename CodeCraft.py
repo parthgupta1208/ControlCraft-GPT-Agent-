@@ -68,7 +68,20 @@ def processtext():
     elif 'c#' in text:
         pass
     elif ' c ' in text:
-        pass
+        completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo", 
+        messages = [{"role": "system", "content" : "You are FridayAI, a large language model trained by Parth Gupta. Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
+        {"role": "user", "content" : text}]
+        )
+        print(completion['choices'][0]['message']['content'])
+        output=completion['choices'][0]['message']['content']
+        output=output.replace("```c","```")
+        output=(output.split("```"))[1].split("```")[0]
+        with open("C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.c", "w") as f:
+            f.write(output)
+        os.system("code C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.c")
+        os.system("gcc C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.c -o codefile.exe")
+        os.system("codefile.exe")
     elif 'webbrowser' in text:
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
