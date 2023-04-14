@@ -88,7 +88,22 @@ def processtext():
         os.system("C:\\Users\\parth\\.conda\\envs\\thebigall\\python.exe \"C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.py\"")
         return render_template("result.html", textboxdata="<center><h2>Chrome Window is Opened</h2></center>")
     else:
-        pass
+        completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages = [{"role": "system", "content" : "Answer as concisely as possible. I will be giving you a prompt on what is to be performed, Give me python script for achieving it using pyautogui, os and other required modules. The code should come as a single output, i.e don't output the code in various parts. Make the code robust enough and make sure that you maximise windows and perform such similar tasks so it is easier to track coordinates and work. Make sure the coordinates on screen are extremely accurate and that you wait enough for one part of the job to be done before starting other one. make the codes windows os friendly and do not give comments in the snippet"},
+        {"role": "user", "content" : text}]
+        )
+        print(completion['choices'][0]['message']['content'])
+        output=completion['choices'][0]['message']['content']
+        output=output.replace("```python","```")
+        output=(output.split("```"))[1].split("```")[0]
+        if output.startswith("python"):
+            output=output.lstrip("python")
+        with open("C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.py", "w") as f:
+            f.write(output)
+        os.system("conda activate thebigall")
+        os.system("C:\\Users\\parth\\.conda\\envs\\thebigall\\python.exe \"C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.py\"")
+        return render_template("result.html", textboxdata="<center><h2>Operation is Performed</h2></center>")
 
 if __name__ == "__main__":
     app.run()
