@@ -48,7 +48,20 @@ def processtext():
         ehtml=html[:html.find("</body>")]+"<center><a href='/copycode'>Copy Code</a></center>"+html[html.find("</body>"):]
         return render_template("result.html", textboxdata=ehtml)
     elif 'java' in text:
-        pass
+        completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo", 
+        messages = [{"role": "system", "content" : "You are FridayAI, a large language model trained by Parth Gupta. Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
+        {"role": "user", "content" : text}]
+        )
+        print(completion['choices'][0]['message']['content'])
+        output=completion['choices'][0]['message']['content']
+        output=output.replace("```cpp","```")
+        output=(output.split("```"))[1].split("```")[0]
+        with open("C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.java", "w") as f:
+            f.write(output)
+        os.system("code C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.java")
+        os.system("javac C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.java")
+        os.system("java -classpath C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.class")
     elif 'c++' in text:
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
