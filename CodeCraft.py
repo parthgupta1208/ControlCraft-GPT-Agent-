@@ -66,7 +66,20 @@ def processtext():
         os.system("codefile.exe")
         return render_template("result.html", textboxdata="<center><h2>VS Code Window is Opened</h2></center>")
     elif 'c#' in text:
-        pass
+        completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo", 
+        messages = [{"role": "system", "content" : "You are FridayAI, a large language model trained by Parth Gupta. Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
+        {"role": "user", "content" : text}]
+        )
+        print(completion['choices'][0]['message']['content'])
+        output=completion['choices'][0]['message']['content']
+        output=output.replace("```cs","```")
+        output=(output.split("```"))[1].split("```")[0]
+        with open("C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.cs", "w") as f:
+            f.write(output)
+        os.system("code C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.cs")
+        os.system("csc C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.cs")
+        os.system("C:\\Everything\\Code\\Python\\Projects\\CodeCraft\\Codes\\codefile.exe")
     elif ' c ' in text:
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
