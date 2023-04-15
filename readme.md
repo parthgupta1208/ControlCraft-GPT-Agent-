@@ -1,4 +1,4 @@
-# ControlCraft
+# ControlCraft (CodeCraft)
 
 ControlCraft is an AGI, that can not only generate codes, but can also preview their output by executing the apps. It can also control your Web-Browser as and how you want it to. ControlCraft uses a GPT-3.5 agent and engineered prompts to generate highly error free codes and process mechanisms thus increasing efficiency.
 
@@ -18,7 +18,7 @@ https://user-images.githubusercontent.com/114602309/232190583-80748c6f-3a61-44b8
 ## Getting Started
 
 1. Clone the repository: `git clone https://github.com/parthgupta1208/ControlCraft-GPT-Agent-.git`
-2. Open `ControlCraft.py` in a python environment having all dependencies
+2. Open `CodeCraft.py` in a python environment having all dependencies
 3. Change paths as per your needs and you are Good to Go!
 
 ## Contributing
