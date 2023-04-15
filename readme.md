@@ -11,10 +11,9 @@ CodeCraft is an AGI, that can not only generate codes, but can also preview thei
 
 ## Here's a demo of how it works
 
-<video width="640" height="360" controls>
-  <source src="https://github.com/parthgupta1208/CodeCraft/blob/master/AGI_ParthGupta.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+
+https://user-images.githubusercontent.com/114602309/232190583-80748c6f-3a61-44b8-a09f-ead5f8463132.mp4
+
 
 ## Getting Started
 
