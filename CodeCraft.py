@@ -23,7 +23,7 @@ def processtext():
     if 'python' in text:
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
-        messages = [{"role": "system", "content" : "You are FridayAI, a large language model trained by Parth Gupta. Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
+        messages = [{"role": "system", "content" : "Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
         {"role": "user", "content" : text}]
         )
         print(completion['choices'][0]['message']['content'])
@@ -38,7 +38,7 @@ def processtext():
     elif 'html' in text:
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
-        messages = [{"role": "system", "content" : "You are FridayAI, a large language model trained by Parth Gupta. Answer as concisely as possible. I will be giving you a prompt on how a webpage should look like and what will its function be. Give me the code for it but don't explain how the code works. The code should contain css and javscript code so the page is responsive. Ise the <script> and <style> tags instead of creating separate files"},
+        messages = [{"role": "system", "content" : "Answer as concisely as possible. I will be giving you a prompt on how a webpage should look like and what will its function be. Give me the code for it but don't explain how the code works. The code should contain css and javscript code so the page is responsive. Ise the <script> and <style> tags instead of creating separate files"},
         {"role": "user", "content" : text}]
         )
         print(completion['choices'][0]['message']['content'])
@@ -50,7 +50,7 @@ def processtext():
     elif 'java' in text:
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
-        messages = [{"role": "system", "content" : "You are FridayAI, a large language model trained by Parth Gupta. Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
+        messages = [{"role": "system", "content" : "Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
         {"role": "user", "content" : text}]
         )
         print(completion['choices'][0]['message']['content'])
@@ -65,7 +65,7 @@ def processtext():
     elif 'c++' in text:
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
-        messages = [{"role": "system", "content" : "You are FridayAI, a large language model trained by Parth Gupta. Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
+        messages = [{"role": "system", "content" : "Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
         {"role": "user", "content" : text}]
         )
         print(completion['choices'][0]['message']['content'])
@@ -81,7 +81,7 @@ def processtext():
     elif 'c#' in text:
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
-        messages = [{"role": "system", "content" : "You are FridayAI, a large language model trained by Parth Gupta. Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
+        messages = [{"role": "system", "content" : "Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
         {"role": "user", "content" : text}]
         )
         print(completion['choices'][0]['message']['content'])
@@ -96,7 +96,7 @@ def processtext():
     elif ' c ' in text:
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
-        messages = [{"role": "system", "content" : "You are FridayAI, a large language model trained by Parth Gupta. Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
+        messages = [{"role": "system", "content" : "Answer as concisely as possible. I will be giving you a prompt on what will a code do. Give me the code for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. If creating functions, always include code for main as well"},
         {"role": "user", "content" : text}]
         )
         print(completion['choices'][0]['message']['content'])
@@ -111,7 +111,7 @@ def processtext():
     elif 'webbrowser' in text:
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        messages = [{"role": "system", "content" : "Answer as concisely as possible. I will be giving you a prompt on what is to be performed, Give me selenium python script for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. Set chromedriver path as 'C:/Everything/chromedriver.exe'. Do not create code that might raise NoSuchElementException.wrap code in a try-except block to catch the NoSuchElementException exception and handle it gracefully, for example, by retrying the operation after waiting for some time or logging the error."},
+        messages = [{"role": "system", "content" : "Answer as concisely as possible. I will be giving you a prompt on what is to be performed, Give me selenium python script for it but don't explain how the code works. The code should come as a single output, i.e don't output the code in various parts. Set chromedriver path as 'C:/Everything/chromedriver.exe'. Do not create code that might raise NoSuchElementException.wrap code in a try-except block to catch the NoSuchElementException exception and handle it gracefully, for example, by retrying the operation after waiting for some time or logging the error. Make sure you wait for the js to execute before continuing."},
         {"role": "user", "content" : text}]
         )
         print(completion['choices'][0]['message']['content'])
