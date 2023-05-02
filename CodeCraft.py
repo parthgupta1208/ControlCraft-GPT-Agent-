@@ -6,7 +6,7 @@ import pyautogui
 
 # setup flask
 app = Flask(__name__)
-openai.api_key = os.getenv("OPENAI_KEY")
+openai.api_key = "some error with picking up data"
 
 # home route
 @app.route("/")
@@ -129,7 +129,7 @@ def processtext():
     else:
         completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        messages = [{"role": "system", "content" : "Answer as concisely as possible. I will be giving you a prompt on what is to be performed, Give me python script for achieving it using pyautogui, os and other required modules. The code should come as a single output, i.e don't output the code in various parts. Make the code robust enough and make sure that you maximise windows and perform such similar tasks so it is easier to track coordinates and work. Make sure the coordinates on screen are extremely accurate and that you wait enough for one part of the job to be done before starting other one. make the codes windows os friendly and do not give comments in the snippet"},
+        messages = [{"role": "system", "content" : "Answer as concisely as possible. I will be giving you a prompt on what is to be performed, Give me python script for achieving it using pyautogui, os and other required modules. you can also Run windows shell commands using python for achieving a part of the tasks. The code should come as a single output, i.e don't output the code in various parts. Make the code robust enough and make sure that you maximise windows and perform such similar tasks so it is easier to track coordinates and work. Make sure the coordinates on screen are extremely accurate and that you wait enough for one part of the job to be done before starting other one. make the codes windows os friendly and do not give comments in the snippet"},
         {"role": "user", "content" : text}]
         )
         print(completion['choices'][0]['message']['content'])
