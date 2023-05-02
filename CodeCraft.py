@@ -6,7 +6,7 @@ import pyautogui
 
 # setup flask
 app = Flask(__name__)
-openai.api_key = "some error with picking up data"
+openai.api_key = os.environ["OPENAI_KEY"]
 
 # home route
 @app.route("/")
